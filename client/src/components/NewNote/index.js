@@ -1,18 +1,28 @@
-import React, { useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useRef, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { onAddNote } from '../../redux/modules/notes'
 
-export function NewNote(props) {
-  const { onAddNote } = props
+export function NewNote() {
   const textAreaRef = useRef(null)
+  const dispatch = useDispatch()
 
   function onSubmit() {
     const { value } = textAreaRef.current
     if (value) {
-      onAddNote(value)
+      dispatch(onAddNote(value))
       textAreaRef.current.value = ''
     }
   }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (textAreaRef.current.shadowRoot.host.clientHeight > 0) {
+        textAreaRef.current.shadowRoot.host.requestUpdate()
+        clearInterval(interval)
+      }
+    }, 50)
+    textAreaRef.current.shadowRoot.host.requestUpdate()
+  }, [])
 
   return (
     <Wrapper>
@@ -27,13 +37,10 @@ export function NewNote(props) {
   )
 }
 
-NewNote.propTypes = {
-  onAddNote: PropTypes.func.isRequired
-}
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 32px;
+  width: 100%;
 `

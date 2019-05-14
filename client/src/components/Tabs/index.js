@@ -4,7 +4,7 @@ import { NewNote } from '../NewNote'
 
 export function Tabs() {
   return (
-    <wired-tabs selected={'New'}>
+    <wired-tabs style={{ width: 640 }}>
       <wired-tab name="New">
         <NewNote />
       </wired-tab>
