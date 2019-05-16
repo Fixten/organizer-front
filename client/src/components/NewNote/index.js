@@ -1,46 +1,56 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { onAddNote } from '../../redux/modules/notes'
+import Modal from 'react-responsive-modal'
 
 export function NewNote() {
-  const textAreaRef = useRef(null)
+  const [isOpen, setIsOpen] = useState(false)
+  const titleRef = useRef(null)
+  const textRef = useRef(null)
   const dispatch = useDispatch()
 
   function onSubmit() {
-    const { value } = textAreaRef.current
-    if (value) {
-      dispatch(onAddNote(value))
-      textAreaRef.current.value = ''
+    const title = titleRef.current.value
+    const text = textRef.current.value
+    if (title && text) {
+      dispatch(onAddNote(title, text))
+      textRef.current.value = ''
+      titleRef.current.value = ''
     }
   }
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (textAreaRef.current.shadowRoot.host.clientHeight > 0) {
-        textAreaRef.current.shadowRoot.host.requestUpdate()
-        clearInterval(interval)
-      }
-    }, 50)
-    textAreaRef.current.shadowRoot.host.requestUpdate()
-  }, [])
+
+  const onToogleModal = () => setIsOpen(prevState => !prevState)
 
   return (
-    <Wrapper>
-      <wired-textarea
-        style={{ marginBottom: 16 }}
-        placeholder={'Enter your amazing note'}
-        rows={6}
-        ref={textAreaRef}
-      />
-      <wired-button onClick={onSubmit}>Create!</wired-button>
-    </Wrapper>
+    <>
+      <wired-button onClick={onToogleModal} style={{ padding: '0 32px' }}>
+        +1
+      </wired-button>
+      <Modal
+        open={isOpen}
+        onClose={onToogleModal}
+        styles={{ modal: { width: 640 } }}
+      >
+        <Wrapper>
+          <wired-input placeholder={'Here goes the title'} ref={titleRef} />
+          <wired-textarea
+            style={{ marginBottom: 16, width: '100%' }}
+            placeholder={'Enter your amazing note'}
+            rows={6}
+            ref={textRef}
+          />
+          <wired-button onClick={onSubmit} style={{ height: 32 }}>
+            Create!
+          </wired-button>
+        </Wrapper>
+      </Modal>
+    </>
   )
 }
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 32px;
-  width: 100%;
+  padding-top: 32px;
 `

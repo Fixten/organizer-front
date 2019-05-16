@@ -15,6 +15,7 @@ export function Logo() {
 
 const Wrapper = styled.div`
   position relative;
+  
 `
 
 const Heading = styled.h1`

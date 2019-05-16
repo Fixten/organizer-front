@@ -1,7 +1,10 @@
 const addNote = 'NOTES/ADD_NOTE'
 
 const initialState = {
-  list: []
+  list: [
+    { title: 'first', text: 'lil text' },
+    { title: 'fourth', text: 'screw u' }
+  ]
 }
 
 export default (state = initialState, action) => {
@@ -16,4 +19,7 @@ export default (state = initialState, action) => {
   }
 }
 
-export const onAddNote = note => ({ type: addNote, payload: note })
+export const onAddNote = (title, text) => ({
+  type: addNote,
+  payload: { title, text }
+})

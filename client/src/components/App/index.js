@@ -1,16 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Tabs } from '../Tabs'
 import { Logo } from '../Logo'
+import { Notes } from '../Notes'
 
 export function App() {
   return (
-    <>
-      <Wrapper>
-        <Logo />
-        <Tabs />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Logo />
+      <Notes />
+    </Wrapper>
   )
 }
 
