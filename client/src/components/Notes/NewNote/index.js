@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { onAddNote } from '../../redux/modules/notes'
+import { onAddNote } from '../../../redux/modules/notes'
 import Modal from 'react-responsive-modal'
+import { NoteView } from '../NoteView'
 
 export function NewNote() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,9 +25,7 @@ export function NewNote() {
 
   return (
     <>
-      <wired-button onClick={onToogleModal} style={{ padding: '0 32px' }}>
-        +1
-      </wired-button>
+      <NoteView onClick={onToogleModal}>+1</NoteView>
       <Modal
         open={isOpen}
         onClose={onToogleModal}

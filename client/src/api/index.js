@@ -1,4 +1,4 @@
-const root = `/api`
+const root = `http://localhost:3001/api`
 
 const parseResponse = async response => {
   const json = await response.json()

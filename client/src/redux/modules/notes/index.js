@@ -32,9 +32,9 @@ export const onAddNote = (title, text) => ({
 
 export const onGetNotes = () => async dispatch => {
   const requestParams = {
-    url: '/get-notes',
+    url: '/notes',
     method: 'GET'
   }
   const notes = await api(requestParams)
-  dispatch({ type: getNotes, notes })
+  dispatch({ type: getNotes, payload: notes })
 }

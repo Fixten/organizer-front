@@ -1,19 +1,28 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { NewNote } from '../NewNote'
+import { NewNote } from './NewNote'
+import { NoteView } from './NoteView'
+import { onGetNotes } from '../../redux/modules/notes'
 
 export function Notes() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(onGetNotes())
+  }, [dispatch])
   const notes = useSelector(state => state.notes.list)
+
+  function onOpen() {}
+
   const notesContent = notes.map((item, index) => {
     const { title, text } = item
     return (
-      <wired-card key={index}>
+      <NoteView key={index} onClick={() => onOpen(index)}>
         <h4>{title}</h4>
-        {text.split(/\n/).map((line, lineIndex) => (
+        {/* {text.split(/\n/).map((line, lineIndex) => (
           <p key={lineIndex}>{line}</p>
-        ))}
-      </wired-card>
+        ))} */}
+      </NoteView>
     )
   })
   return (
