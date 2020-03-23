@@ -1,6 +1,6 @@
-import express = require('express')
-import controllers from './controllers'
-import cors = require('cors')
+import express from 'express'
+import controllers from './controllers/index'
+import cors from 'cors'
 import { mongooseConnect } from './db'
 
 mongooseConnect()

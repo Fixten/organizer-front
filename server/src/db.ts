@@ -1,8 +1,6 @@
-import mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 const host = 'localhost'
-
-export let db
 
 const URI = `mongodb://${encodeURIComponent('server')}:${encodeURIComponent(
   'ksadfmo62jjks'
@@ -10,7 +8,10 @@ const URI = `mongodb://${encodeURIComponent('server')}:${encodeURIComponent(
 
 export async function mongooseConnect() {
   try {
-    await mongoose.connect(URI, { useNewUrlParser: true })
+    await mongoose.connect(URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    })
     console.log('Mongoose connected')
   } catch (error) {
     console.log(`Mongoose connection failed: ${error}`)
