@@ -15,7 +15,10 @@ export function Notes() {
   function onOpen() {}
 
   const notesContent = notes.map((item, index) => {
-    const { title, text } = item
+    const {
+      title
+      // text
+    } = item
     return (
       <NoteView key={index} onClick={() => onOpen(index)}>
         <h4>{title}</h4>
