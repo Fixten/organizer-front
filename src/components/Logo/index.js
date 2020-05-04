@@ -1,13 +1,9 @@
 import React from 'react'
-import ReactRough, { Rectangle } from 'react-rough'
 import styled from 'styled-components'
 
 export function Logo() {
   return (
     <Wrapper>
-      <ReactRough width={320} height={96}>
-        <Rectangle points={[0, 0, 320, 96]} fill="#A3A1A8" fillWeight={4} />
-      </ReactRough>
       <Heading>Organizer</Heading>
     </Wrapper>
   )
