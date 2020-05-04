@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { onGetNotes } from 'redux/modules/notes'
+import { onGetNotes } from '../../redux/reducers/notes'
 
 export function Notes() {
   const notes = useSelector(state => state.notes.list)
