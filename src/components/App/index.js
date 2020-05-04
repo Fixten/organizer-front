@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Logo } from '../Logo'
-import { Notes } from '../Notes'
+// import { Notes } from '../Notes'
 
 export function App() {
   return (
     <Wrapper>
       <Logo />
-      <Notes />
+      {/* <Notes /> */}
     </Wrapper>
   )
 }
