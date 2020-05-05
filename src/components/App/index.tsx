@@ -1,13 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Notes } from 'components/Notes'
+// import { Notes } from '../Notes'
 
-export function App() {
-  return (
-    <Wrapper>
-      <Notes />
-    </Wrapper>
-  )
+export const App: React.FC = () => {
+  return <Wrapper>{/* <Notes /> */}</Wrapper>
 }
 
 const Wrapper = styled.div`
