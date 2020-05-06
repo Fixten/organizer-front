@@ -11,7 +11,6 @@ export const Notes: React.FC = () => {
   useEffect(() => {
     dispatch(onGetNotes())
   }, [dispatch])
-
   const notesContent = notes.map<JSX.Element>((item, index) => {
     const { title, text } = item
     return (
