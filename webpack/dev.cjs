@@ -1,9 +1,9 @@
 const path = require('path')
-const webpack = requre('webpack')
+const webpack = require('webpack')
 const merge = require('webpack-merge')
-const common = requrie('./common.cjs')
+const common = require('./common.cjs')
 
-const apiLink = 'http://localhost:3001'
+const apiLink = 'http://localhost:4444'
 
 module.exports = merge(common, {
   mode: 'development',
@@ -11,42 +11,42 @@ module.exports = merge(common, {
     filename: 'bundle.js',
     pathinfo: false,
     path: path.resolve(__dirname, '../build'),
-    publicPath: '/'
+    publicPath: '/',
   },
   devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     hot: true,
-    port: 3000,
+    port: 3333,
     historyApiFallback: true,
     proxy: [
       {
-        context: ['/api', '/avatars', '/logos', '/portfolios'],
+        context: ['/api'],
         target: apiLink,
-        changeOrigin: true
-      }
+        changeOrigin: true,
+      },
     ],
     quiet: true,
-    https: true
+    https: true,
   },
   optimization: {
     removeAvailableModules: false,
     removeEmptyChunks: false,
-    splitChunks: false
+    splitChunks: false,
   },
   module: {
     rules: [
       {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'source-map-loader'
+        loader: 'source-map-loader',
       },
       {
         test: /\.js$/,
         include: /node_modules/,
-        use: ['react-hot-loader/webpack']
-      }
-    ]
+        use: ['react-hot-loader/webpack'],
+      },
+    ],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 })
