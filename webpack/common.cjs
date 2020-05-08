@@ -3,6 +3,10 @@ const Dotenv = require('dotenv-webpack')
 const htmlConfig = require('./htmlConfig.cjs')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
+  .default
+
+const styledComponentsTransformer = createStyledComponentsTransformer()
 
 module.exports = {
   entry: ['./src/index.tsx'],
@@ -23,7 +27,17 @@ module.exports = {
       {
         test: /\.ts(x?)$/,
         include: /src/,
-        use: ['ts-loader'],
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              getCustomTransformers: () => ({
+                before: [styledComponentsTransformer],
+              }),
+            },
+          },
+          'eslint-loader',
+        ],
       },
     ],
   },

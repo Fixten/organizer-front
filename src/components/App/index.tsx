@@ -5,6 +5,7 @@ import { Notes } from '../Notes'
 export const App: React.FC = () => {
   return (
     <Wrapper>
+      test
       <Notes />
     </Wrapper>
   )
