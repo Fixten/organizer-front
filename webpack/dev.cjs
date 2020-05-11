@@ -15,7 +15,7 @@ module.exports = merge(common, {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'build'),
+    contentBase: path.join(__dirname, './dev-build'),
     hot: true,
     port: 3333,
     historyApiFallback: true,
@@ -40,11 +40,6 @@ module.exports = merge(common, {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader',
-      },
-      {
-        test: /\.js$/,
-        include: /node_modules/,
-        use: ['react-hot-loader/webpack'],
       },
     ],
   },
