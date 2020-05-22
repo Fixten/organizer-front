@@ -9,8 +9,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:lodash-fp/recommended"
+    "prettier/@typescript-eslint"
   ],
   "settings": {
     "react": {
@@ -29,13 +28,8 @@
     "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks", "@typescript-eslint", "lodash-fp"],
+  "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
-    "@typescript-eslint/ban-ts-ignore": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { "ignoreRestSiblings": true }
-    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }
