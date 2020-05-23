@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --config webpack/dev.cjs --open",
-    "build": "webpack --config webpack/prod.cjs"
+    "build": "webpack --config webpack/prod.cjs",
+    "lint": "eslint src/",
+    "fix": "eslint src/ --fix"
   },
   "dependencies": {
     "react": "^16.13.1",
