@@ -1,7 +1,8 @@
 const root = `http://localhost:3001/api`;
 
+//need error handler
 async function parseResponse<T>(response: Response): Promise<T> {
-  const json = await response.json();
+  const json = (await response.json().catch(console.error)) as T;
   if (response.ok) {
     return json;
   }
