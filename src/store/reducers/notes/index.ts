@@ -1,39 +1,39 @@
-import { ThunkAction } from 'redux-thunk'
-import { AppState } from 'store/reducers'
+import { ThunkAction } from 'redux-thunk';
+import { AppState } from 'store/reducers';
 
-const setNotes = 'NOTES/ADD_NOTE'
+const setNotes = 'NOTES/ADD_NOTE';
 
 interface ListItem {
-  title: string
-  text: string
+  title: string;
+  text: string;
 }
 
-type List = ListItem[]
+type List = ListItem[];
 
 interface Actions {
-  type: typeof setNotes
-  payload: List
+  type: typeof setNotes;
+  payload: List;
 }
 
 interface State {
-  list: List
+  list: List;
 }
 
 const initialState: State = {
   list: [],
-}
+};
 
 export default (state = initialState, action: Actions): State => {
-  const { type, payload } = action
+  const { type, payload } = action;
   switch (type) {
     case setNotes:
       return {
         list: payload,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
 /**
  * Upload new note
@@ -45,14 +45,14 @@ export function onAddNote(
   text: string
 ): ThunkAction<void, AppState, null, Actions> {
   return (dispatch, state): void => {
-    const { list } = state().notes
-    const newList = [...list, { title, text }]
-    localStorage.setItem('list', JSON.stringify(newList))
+    const { list } = state().notes;
+    const newList = [...list, { title, text }];
+    localStorage.setItem('list', JSON.stringify(newList));
     dispatch({
       type: setNotes,
       payload: newList,
-    })
-  }
+    });
+  };
 }
 
 /**
@@ -60,7 +60,7 @@ export function onAddNote(
  */
 export function onGetNotes(): ThunkAction<void, AppState, null, Actions> {
   return (dispatch): void => {
-    const list = localStorage.getItem('list')
-    if (list) dispatch({ type: setNotes, payload: JSON.parse(list) })
-  }
+    const list = localStorage.getItem('list');
+    if (list) dispatch({ type: setNotes, payload: JSON.parse(list) });
+  };
 }
