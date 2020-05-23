@@ -1,12 +1,12 @@
-const CopyPlugin = require('copy-webpack-plugin')
-const Dotenv = require('dotenv-webpack')
-const htmlConfig = require('./htmlConfig.cjs')
-const htmlWebpackPlugin = require('html-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const htmlConfig = require('./htmlConfig.cjs');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components')
-  .default
+  .default;
 
-const styledComponentsTransformer = createStyledComponentsTransformer()
+const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = {
   entry: ['./src/index.tsx'],
@@ -42,8 +42,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyPlugin([{ from: './public', to: './' }]),
+    new CopyPlugin({ patterns: [{ from: './public', to: './' }] }),
     new Dotenv(),
     new htmlWebpackPlugin(htmlConfig),
   ],
-}
+};
