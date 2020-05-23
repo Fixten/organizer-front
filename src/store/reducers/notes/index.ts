@@ -1,5 +1,4 @@
-import { ThunkAction } from 'redux-thunk';
-import { AppState } from 'store/reducers';
+import { AppState, TypedThunkAction, TypedThunkDispatch } from 'store/reducers';
 
 const setNotes = 'NOTES/ADD_NOTE';
 
@@ -43,9 +42,12 @@ export default (state = initialState, action: Actions): State => {
 export function onAddNote(
   title: string,
   text: string
-): ThunkAction<void, AppState, null, Actions> {
-  return (dispatch, state): void => {
-    const { list } = state().notes;
+): TypedThunkAction<Actions> {
+  return (
+    dispatch: TypedThunkDispatch<Actions>,
+    getState: () => AppState
+  ): void => {
+    const { list } = getState().notes;
     const newList = [...list, { title, text }];
     localStorage.setItem('list', JSON.stringify(newList));
     dispatch({
@@ -58,9 +60,12 @@ export function onAddNote(
 /**
  * Loads notes in store
  */
-export function onGetNotes(): ThunkAction<void, AppState, null, Actions> {
-  return (dispatch): void => {
+export function onGetNotes(): TypedThunkAction<Actions> {
+  return (dispatch: TypedThunkDispatch<Actions>): void => {
     const list = localStorage.getItem('list');
-    if (list) dispatch({ type: setNotes, payload: JSON.parse(list) });
+    if (list) {
+      const payload = JSON.parse(list) as List;
+      dispatch({ type: setNotes, payload });
+    }
   };
 }
