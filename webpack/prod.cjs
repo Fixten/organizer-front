@@ -3,7 +3,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./common.cjs');
-const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
 
 module.exports = merge(common, {
   mode: 'production',
@@ -25,9 +24,5 @@ module.exports = merge(common, {
     },
     runtimeChunk: 'single',
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new webpack.HashedModuleIdsPlugin(),
-    new PrepackWebpackPlugin(),
-  ],
+  plugins: [new CleanWebpackPlugin(), new webpack.HashedModuleIdsPlugin()],
 });
