@@ -1,16 +1,16 @@
-const path = require('path')
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const common = require('./common.cjs')
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const common = require('./common.cjs');
 
-const apiLink = 'http://localhost:4444'
+const apiLink = 'http://localhost:4444';
 
 module.exports = merge(common, {
   mode: 'development',
   output: {
     filename: 'bundle.js',
     pathinfo: false,
-    path: path.resolve(__dirname, '../build'),
+    path: path.resolve(__dirname, './devBuild'),
     publicPath: '/',
   },
   devtool: 'source-map',
@@ -44,4 +44,4 @@ module.exports = merge(common, {
     ],
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
-})
+});
