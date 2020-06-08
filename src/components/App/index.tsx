@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Notes } from '../Notes';
 
-export const App: React.FC = () => {
+export function App(): ReactElement {
   return (
     <Wrapper>
-      test
       <Notes />
     </Wrapper>
   );
-};
+}
 
 const Wrapper = styled.div`
   display: flex;

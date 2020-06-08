@@ -9,7 +9,8 @@
     "start": "webpack-dev-server --config webpack/dev.cjs --open",
     "build": "webpack --config webpack/prod.cjs",
     "lint": "eslint src/",
-    "fix": "eslint src/ --fix"
+    "fix": "eslint src/ --fix",
+    "test": "jest"
   },
   "dependencies": {
     "react": "^16.13.1",
