@@ -1,8 +1,8 @@
 module.exports = {
-  inject: false,
-  template: require('html-webpack-template'),
   title: 'Organizer',
+  scriptLoading: 'defer',
+  inject: 'body',
   meta: [{ name: 'theme-color', content: '#fff' }],
-  appMountIds: ['root'],
-  mobile: true,
-}
+  minify: false,
+  xhtml: true,
+};
