@@ -13,6 +13,7 @@ module.exports = {
     <html lang="en">
       <head>
         <title>Organizer</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
         ${htmlWebpackPlugin.tags.headTags}
       </head>
       <body>

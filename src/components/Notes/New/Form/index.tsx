@@ -2,6 +2,7 @@ import React, { useState, ReactElement } from 'react';
 import { onAddNote, OnAddNoteData } from 'store/reducers/notes';
 import { useThunkDispatch } from 'hooks/useThunkDispatch';
 import { ThunkDispatch } from 'store/reducers';
+import { TextField } from '@material-ui/core';
 
 interface Props {
   onClose: () => void;
@@ -32,22 +33,24 @@ export function Form(props: Props): ReactElement {
   const [text, setText] = useState<string>('');
   const dispatch = useThunkDispatch();
 
-  const onSubmit = () => submit({ onClose }, { title, text }, dispatch);
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    submit({ onClose }, { title, text }, dispatch);
+  }
 
   return (
     <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        placeholder="title"
+      <TextField
+        label="Name"
         value={title}
         onChange={(event) => setTitle(event.currentTarget.value)}
       />
-      <textarea
+      <TextField
+        label="Content"
         value={text}
         onChange={(event) => setText(event.currentTarget.value)}
-      >
-        Enter note
-      </textarea>
+        multiline
+      />
       <button type="submit">Create</button>
     </form>
   );
