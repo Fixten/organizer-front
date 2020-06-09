@@ -15,9 +15,4 @@ describe('create new note', () => {
     expect(onClose).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledTimes(1);
   });
-  it('test', () => {
-    expect.hasAssertions();
-    onClose();
-    expect(onClose).toHaveBeenCalledTimes(1);
-  });
 });

@@ -10,7 +10,7 @@
     "build": "webpack --config webpack/prod.cjs",
     "lint": "eslint src/",
     "fix": "eslint src/ --fix",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dependencies": {
     "react": "^16.13.1",
