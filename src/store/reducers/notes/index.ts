@@ -1,6 +1,6 @@
 import { AppState, TypedThunkAction, TypedThunkDispatch } from 'store/reducers';
 
-const setNotes = 'NOTES/ADD_NOTE';
+export const setNotes = 'NOTES/ADD_NOTE';
 
 interface ListItem {
   title: string;
