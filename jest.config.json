@@ -1,0 +1,5 @@
+{
+  "modulePaths": ["src"],
+  "preset": "ts-jest",
+  "clearMocks": true
+}
