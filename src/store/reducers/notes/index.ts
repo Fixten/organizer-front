@@ -9,7 +9,7 @@ interface ListItem {
 
 type List = ListItem[];
 
-interface Actions {
+export interface NoteActions {
   type: typeof setNotes;
   payload: List;
 }
@@ -22,7 +22,7 @@ const initialState: State = {
   list: [],
 };
 
-export default (state = initialState, action: Actions): State => {
+export default (state = initialState, action: NoteActions): State => {
   const { type, payload } = action;
   switch (type) {
     case setNotes:
@@ -34,17 +34,19 @@ export default (state = initialState, action: Actions): State => {
   }
 };
 
+export interface OnAddNoteData {
+  title: string;
+  text: string;
+}
+
 /**
  * Upload new note
- * @param {string} title title of the note
- * @param {string} text text content
+ * @param {OnAddNoteData} data
  */
-export function onAddNote(
-  title: string,
-  text: string
-): TypedThunkAction<Actions> {
+export function onAddNote(data: OnAddNoteData): TypedThunkAction<NoteActions> {
+  const { title, text } = data;
   return (
-    dispatch: TypedThunkDispatch<Actions>,
+    dispatch: TypedThunkDispatch<NoteActions>,
     getState: () => AppState
   ): void => {
     const { list } = getState().notes;
@@ -60,8 +62,8 @@ export function onAddNote(
 /**
  * Loads notes in store
  */
-export function onGetNotes(): TypedThunkAction<Actions> {
-  return (dispatch: TypedThunkDispatch<Actions>): void => {
+export function onGetNotes(): TypedThunkAction<NoteActions> {
+  return (dispatch: TypedThunkDispatch<NoteActions>): void => {
     const list = localStorage.getItem('list');
     if (list) {
       const payload = JSON.parse(list) as List;
