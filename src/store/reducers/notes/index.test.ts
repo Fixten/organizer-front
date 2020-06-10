@@ -1,9 +1,14 @@
-import { setNotes, onAddNote, onGetNotes } from 'store/reducers/notes';
+import reducer, {
+  setNotes,
+  onAddNote,
+  onGetNotes,
+  initialState,
+} from 'store/reducers/notes';
 import { AppState } from 'store/reducers';
 
 describe('redux notes', () => {
   const dispatch = jest.fn();
-  const getState = jest.fn((): AppState => ({ notes: { list: [] } }));
+  const getState = jest.fn((): AppState => ({ notes: initialState }));
   const storageName = 'list';
   const data = { title: 'title', text: 'text' };
   const newList = [data];
@@ -48,6 +53,14 @@ describe('redux notes', () => {
         type: setNotes,
         payload: newList,
       });
+    });
+  });
+
+  describe('reducer', () => {
+    it('set notes', () => {
+      expect.assertions(1);
+      const newState = reducer(undefined, { type: setNotes, payload: newList });
+      expect(newState).toStrictEqual({ list: newList });
     });
   });
 });

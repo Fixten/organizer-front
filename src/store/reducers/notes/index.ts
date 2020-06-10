@@ -18,7 +18,7 @@ interface State {
   list: List;
 }
 
-const initialState: State = {
+export const initialState: State = {
   list: [],
 };
 
