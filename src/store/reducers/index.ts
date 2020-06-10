@@ -1,8 +1,9 @@
 import { combineReducers, Action } from 'redux';
-import notes, { NoteActions } from './notes';
 import { ThunkAction, ThunkDispatch as dispatch } from 'redux-thunk';
+import notes, { NoteActions } from './notes';
+import checklist from './checklist';
 
-export const rootReducer = combineReducers({ notes });
+export const rootReducer = combineReducers({ notes, checklist });
 
 export type AppState = ReturnType<typeof rootReducer>;
 

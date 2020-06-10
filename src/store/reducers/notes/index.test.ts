@@ -4,11 +4,12 @@ import reducer, {
   onGetNotes,
   initialState,
 } from 'store/reducers/notes';
-import { AppState } from 'store/reducers';
+import { store } from 'store';
 
 describe('redux notes', () => {
+  const app = store.getState();
   const dispatch = jest.fn();
-  const getState = jest.fn((): AppState => ({ notes: initialState }));
+  const getState = jest.fn(() => ({ ...app, notes: initialState }));
   const storageName = 'list';
   const data = { title: 'title', text: 'text' };
   const newList = [data];
