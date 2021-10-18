@@ -1,5 +1,6 @@
-import React, { useState, ReactElement } from 'react';
-import { Form } from 'components/Notes/New/Form';
+import React, { ReactElement, useState } from 'react';
+import { Button } from '@material-ui/core';
+import { Form } from './Form';
 
 export function New(): ReactElement {
   const [isForm, setIsForm] = useState<boolean>(false);
@@ -11,6 +12,6 @@ export function New(): ReactElement {
   return isForm ? (
     <Form onClose={onClose} />
   ) : (
-    <button onClick={() => setIsForm(true)}>+1</button>
+    <Button onClick={() => setIsForm(true)}>Add</Button>
   );
 }

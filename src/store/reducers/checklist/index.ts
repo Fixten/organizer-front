@@ -6,7 +6,6 @@ interface AddAction {
   type: typeof addItem;
   payload: string;
 }
-
 export type ChecklistActions = AddAction;
 
 interface State {
