@@ -3,6 +3,8 @@
 General purpose organizer
 
 // add https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+// react-query
+// rxjs
 
 Current goal:
 
