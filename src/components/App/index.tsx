@@ -1,8 +1,7 @@
-import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Notes } from '../Notes';
 
-export function App(): ReactElement {
+export function App() {
   return (
     <Wrapper>
       <Notes />
