@@ -1,16 +1,19 @@
-import React, { ReactElement } from 'react';
-import styled from 'styled-components';
-import { Typography } from '@material-ui/core';
+import styled from "styled-components";
 
-import { List } from 'components/Notes/List';
-import { New } from 'components/Notes/New';
+import { useNotes } from "hooks/useNotes";
 
-export function Notes(): ReactElement {
+import { New } from "./New";
+import { NotesList } from "./NotesList";
+import { Typography } from "@mui/material";
+
+export function Notes() {
+  const [notes] = useNotes();
+
   return (
     <Wrapper>
       <Typography variant="h2">Notes</Typography>
       <New />
-      <List />
+      <NotesList notes={notes} />
     </Wrapper>
   );
 }

@@ -1,6 +1,0 @@
-{
-  "modulePaths": ["src"],
-  "preset": "ts-jest",
-  "clearMocks": true,
-  "setupFiles": ["jest-localstorage-mock"]
-}
