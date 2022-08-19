@@ -4,7 +4,7 @@ General purpose organizer
 
 Current goal:
 
-- Need to be able to create dayly lists. Data is not important, can be stored on front.
+- todo list
 
 What are my goals with this?
 
@@ -14,3 +14,8 @@ What are my goals with this?
 - do server (when frontend will be good and usefull)
 - do deployment and remote server
 - do other langs (when I'll have project running)
+
+tech to try out
+
+- rxjs
+- web components/shadow dom/templates
