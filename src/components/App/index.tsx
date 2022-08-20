@@ -1,3 +1,10 @@
+import { Container } from "@mui/material";
+import { ToDoList } from "../ToDoList";
+
 export function App() {
-    return null
+  return (
+    <Container>
+      <ToDoList />
+    </Container>
+  );
 }
